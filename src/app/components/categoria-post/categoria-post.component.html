@@ -1,0 +1,15 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="row m-3">
+    <div *ngFor="let category of categories" class="col-3">
+        <div class="card d-flex mb-5 bg-light" style="width: 18rem;">
+            <img src="assets/image/papelParede.png" class="card-img-top" alt="..." style="height: 100px;">
+            <div class="card-body">
+                <h2>{{category.title}}</h2>
+            </div>
+            <div class="d-flex justify-content-end mb-3 me-3">
+                <button class="btn" (click)="goTo('/posts/', category.id)">Veja mais</button>
+            </div>
+        </div>
+    </div>
+</div>

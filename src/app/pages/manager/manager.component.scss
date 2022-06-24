@@ -1,0 +1,37 @@
+.manager {
+  padding: 36px 24px 16px;
+
+  > * {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    h1 {
+      color: #550504;
+      font-weight: 600;
+      font-size: 36px;
+    }
+  }
+
+  &__content {
+    .options {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      list-style-type: none;
+
+      &__item {
+        padding: 16px;
+        button {
+          color: #FFFFFF;
+          background-color: #550504;
+          padding: 16px;
+          border: none;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}

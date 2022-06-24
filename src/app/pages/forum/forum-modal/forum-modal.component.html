@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Editar Forum</h1>
+<div mat-dialog-content>
+    <mat-form-field [formGroup]="forumForm" appearance="fill" style="width: 550px;">
+        <mat-label>Nome: </mat-label>
+        <input matInput type="nome" formControlName="title" name="title">
+
+    </mat-form-field>
+    <mat-form-field [formGroup]="forumForm" appearance="fill" style="width: 550px; height: 400px;">
+        <mat-label>Conteúdo: </mat-label>
+        <textarea matInput formControlName="content" style="height: 300px;"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+    <button class="btn btn-primary" mat-button (click)="salvarEdicao()">Salvar</button>
+</div>

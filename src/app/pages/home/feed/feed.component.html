@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="feed">
+    <div class="feed__header">
+        <p>Olá, {{ user?.nome ? user.nome : 'visitante' }}!</p>
+        <button type="button" class="btn" (click)="goTo('feed/create-post')">Nova publicação</button>
+    </div>
+    <hr>
+    <div class="w-75 mx-auto">
+        <app-carousel></app-carousel>
+    </div>
+</div>

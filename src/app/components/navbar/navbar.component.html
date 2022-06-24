@@ -1,0 +1,9 @@
+<nav class="d-flex justify-content-between pe-5 ps-5 p-3">
+  <a *ngIf="user?.tipoUsuario !== 'aluno'" href="/manager">Área da gestão</a>
+  <p (click)="goTo('ebook')">Ebooks</p>
+  <p (click)="goTo('video')">Vídeo</p>
+  <p (click)="goTo('manual')">Manuais</p>
+  <a href="/forum/listagem">Fórum</a>
+  <p (click)="goTo('artigo')">Artigo</p>
+  <p (click)="goTo('banner')">Banners</p>
+</nav>

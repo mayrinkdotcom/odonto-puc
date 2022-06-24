@@ -1,0 +1,32 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="d-flex flex-column align-items-center mt-5">
+    <mat-card class="w-50">
+        <mat-card-title class="forumTitulo d-flex justify-content-center display-5">Novo Fórum</mat-card-title>
+        <form class="forum_form d-flex flex-column" [formGroup]="forumForm">
+            <mat-form-field>
+                <input  class="w-50" matInput placeholder="Título do Fórum" formControlName="title">
+            </mat-form-field>
+            <hr>
+            <mat-form-field>
+                <textarea  class="forumConteudo" matInput placeholder="Descrição" formControlName="content">
+                </textarea>
+            </mat-form-field>
+        </form>
+        
+<div class="d-flex justify-content-end">
+    <button class="me-3 btn" mat-raised-button (click)="salvar()" color="primary">
+        Salvar
+    </button>
+
+    <a href="manager/forum">
+        <button  mat-raised-button>
+            Cancelar
+        </button>
+    </a>
+
+</div>
+    </mat-card>
+        
+
+</div>

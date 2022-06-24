@@ -1,0 +1,27 @@
+.feed {
+    padding: 24px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            background-color: #550504;
+            padding: 8px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+}
+.header{
+    background-color: #08979d;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 800;
+}
+h1{
+    color: #08979d;
+}

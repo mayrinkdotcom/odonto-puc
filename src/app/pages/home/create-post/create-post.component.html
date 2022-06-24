@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<div class="create-post w-50 mx-auto">
+  <div class="create-post__textarea">
+    <form [formGroup]="createPostForm">
+      <label for="title" class="form-label">
+        <strong> Digite o título da postagem:</strong></label>
+      <input type="text" class="form-control mb-3" name="title" formControlName="title" />
+      <label class="form-label"><strong>Tipo da postagem:</strong></label>
+      <br>
+      <select (change)="setCategorie()" formControlName="tipo" class="form-select mb-3">
+        <option value="ebook">E-books</option>
+        <option value="video">Vídeo</option>
+        <option value="manual">Manuais</option>
+        <option value="artigo">Artigo</option>
+        <option value="banner">Banner</option>
+      </select>
+      <div *ngIf="categorias">
+        <label class="form-label"><strong>Categoria:</strong></label>
+        <br>
+        <select  formControlName="categoria" class="form-select">
+          <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.title}}</option>
+        </select>
+      </div>
+      <label class="form-label"><strong>Descrição:</strong></label>
+      <br>
+      <textarea 
+      formControlName="descricao"
+      class="form-control">        
+      </textarea>
+      <hr />
+      
+      <editor *ngIf="this.createPostForm.get('tipo').value == 'artigo'" formControlName="content"
+        apiKey="6uz54dtqa1a0fllho4t94swqq1qfkqfh3s4c371t5yi5lwfn" [init]="{
+          height: 500,
+          plugins: [
+            'advlist autolink lists link image export charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+        }"></editor>
+      <div *ngIf="this.createPostForm.get('tipo').value == 'video'">
+        <label for="title" class="form-label">
+          <strong> Link:</strong></label>
+        <input type="text" class="form-control mb-3" name="title" formControlName="link" />
+      </div>
+
+
+    </form>
+  </div>
+
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+      attr.aria-valuenow="{{ progress.percentage }}" aria-valuemin="0" aria-valuemax="100"
+      [ngStyle]="{ width: progress.percentage + '%' }">
+      {{ progress.percentage }}%
+    </div>
+  </div>
+  <div class="create-post__submit">
+    <label *ngIf="this.createPostForm.get('tipo').value && this.createPostForm.get('tipo').value != 'video'"
+      class="btn btn-default">
+      <input type="file" (change)="selectFile($event)" multiple="multiple" />
+    </label>
+
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+      Criar publicação
+    </button>
+  </div>
+</div>

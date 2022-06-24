@@ -1,0 +1,28 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="forum__loading" *ngIf="loading">
+    
+</div>
+<div class="d-md-flex flex-column align-items-center  mt-3" *ngIf="!loading">
+    <mat-accordion class="w-60">
+        <mat-expansion-panel [expanded]= "true" >
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h1>Fóruns</h1>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-card *ngFor="let forum of foruns;" class="d-flex aligm-itens-center justify-content-between mt-4 mb-5">
+                <div>
+                    <mat-card-title class="mb-3">
+                        {{forum.title}}
+                    </mat-card-title>
+                    <mat-card-subtitle style="max-width: 550px ; text-overflow: ellipsis;">
+                        {{forum.body}}
+                    </mat-card-subtitle>
+                </div>  
+                <a style="height: 40px;" class="btn btn-forum" (click)="goTo('forum/unico', forum.id)">Veja mais...</a>
+            </mat-card>
+            
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

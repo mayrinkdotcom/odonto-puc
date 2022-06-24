@@ -1,0 +1,6 @@
+<mat-card
+  *ngFor="let file of fileUploads"
+  class="d-flex aligm-itens-center justify-content-between mt-4 mb-5"
+>
+  <a href="http://localhost:8080/file/{{ file.id }}">{{ file.name }}</a>
+</mat-card>

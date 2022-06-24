@@ -1,0 +1,18 @@
+.create-post {
+    padding: 24px;
+    &__textarea {
+        margin-bottom: 24px;
+    }
+    &__submit {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            padding: 8px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #550504;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<a class="btn btn-cadastrar-forum" href="forum/novo">Cadastrar novo forum</a>
+<div class="d-md-flex flex-column align-items-center mt-3">
+    <mat-accordion class="w-50">
+        <mat-expansion-panel [expanded]= "true" >
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Fóruns Cadastrados
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-foruns-cadastrados></app-foruns-cadastrados>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

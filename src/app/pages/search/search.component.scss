@@ -1,0 +1,30 @@
+.search {
+    padding: 24px;
+    &__header {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    &__searchbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+            width: 70%;
+            max-width: 540px;
+            height: 40px;
+
+            padding: 8px;
+            border-radius: 8px;
+            border-width: 1px;
+            margin-right: 16px;
+        }
+    }
+
+    &__spinner {
+        display: flex;
+        justify-content: center;
+
+        padding: 24px;
+    }
+}

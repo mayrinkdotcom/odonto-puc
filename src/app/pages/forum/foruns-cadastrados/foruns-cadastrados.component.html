@@ -1,0 +1,15 @@
+<mat-card *ngFor="let forum of foruns" class="d-flex aligm-itens-center justify-content-between mt-4 mb-5">
+    <div>
+        <mat-card-title class="mb-3">
+            {{forum.title}}
+        </mat-card-title>
+        <mat-card-subtitle style="max-width: 550px ;">
+            {{forum.body}}
+        </mat-card-subtitle>
+    </div>  
+    
+    <div class="d-flex">
+        <button class="ms-2" (click)="openDialog(forum)"><img src="assets/image/pencil.svg"></button>
+        <button class="ms-2 me-3" (click)="excluir(forum.id)"><img src="assets/image/trash.svg"></button>
+    </div>
+</mat-card>

@@ -1,0 +1,37 @@
+<div class="review">
+    <ng-container *ngIf="loading">
+        <div class="review__loading d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div class="review__table">
+            <div class="review__table--header">
+                <span>Título</span>
+                <span>Conteúdo</span>
+                <span>Nome</span>
+                <span>Data de publicação</span>
+                <span>Link</span>
+                <span>Ações</span>
+            </div>
+            <hr>
+            <div *ngFor="let post of postsToReview" class="review__table--row">
+                <p>{{ post.title }}</p>
+                <p>{{ post.descricao }}</p>
+                <p>{{ post.tbuser.nome}}</p>
+                <p>{{ post.updatedAt | date }}</p>
+                <span class="link" (click)="goTo(post.category.type, post.id)">Ver Post</span>
+                <div class="actions">
+                    <!-- Aprovar -->
+                    <button class="actions__approve" type="button" title="Aprovar" (click)="sendDecision(post, true)">
+                        <mat-icon aria-hidden="false">done</mat-icon>
+                    </button>
+                    <!-- Rejeitar -->
+                    <button class="actions__decline" type="button" title="Rejeitar" (click)="sendDecision(post, false)">
+                        <mat-icon aria-hidden="false">close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

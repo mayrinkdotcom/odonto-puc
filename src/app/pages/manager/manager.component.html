@@ -1,0 +1,17 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="manager">
+    <div class="manager__title">
+        <h1>Área da gestão</h1>
+    </div>
+
+    <div class="manager__content">
+        <ul class="options">
+            <li class="options__item"><button (click)="goTo('manager/forum')">Gerenciar fóruns</button></li>
+            <li class="options__item"><button (click)="goTo('manager/categoria')">Gerenciar categorias</button></li>
+            <li class="options__item"><button (click)="goTo('manager/posts')">Revisão de publicações</button></li>
+            <li class="options__item"><button (click)="goTo('manager/users')">Gerenciar usuários</button></li>
+        </ul>
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.forum {
+  padding: 24px;
+  >* {
+    margin-bottom: 16px;
+  }
+
+  &__loading {
+    margin: 64px;
+  }
+
+  &__title {
+    font-weight: 500;
+    color: #22af80;
+  }
+
+  &__content {
+    > * {
+      margin: 16px auto 16px;
+    }
+  }
+
+  &__btn {
+    background-color: #920611;
+    color: #fff;
+    &:hover {
+      background-color: #550504;
+    }
+  }
+}

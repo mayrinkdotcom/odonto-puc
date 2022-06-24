@@ -1,0 +1,27 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="d-flex flex-column align-items-center m-5" *ngIf="post">
+    <h1>{{ post.title }}</h1>
+    <h3 *ngIf=post.descricao>{{ post.descricao}}</h3>
+    <p>Publicado por: {{post.tbuser.nome}} </p>
+    <p>Data de criação: {{date}}</p>
+    <div class="mt-4 text-justify" [innerHtml]= 'post.body'></div>
+    <div *ngIf="file.type == 'image/png'">
+        <img src="http://localhost:8080/files/posts/1">
+    </div>
+    <div *ngIf="file">
+        <div class="d-flex flex-column align-items-center" *ngIf="file.type == 'application/pdf'">
+            <button class="btn" (click)="goTo()">Baixar pdf</button>
+            <pdf-viewer *ngIf=pdfSrc [src]="pdfSrc" [render-text]="true" [original-size]="false" [zoom]="1.0"
+                style="width: 800px; height: 500px;"></pdf-viewer>
+        </div>
+        <div class="d-flex flex-column align-items-center"
+            *ngIf="file.type != 'application/pdf' && file.type != 'image/png'">
+            <div class="alert alert-secondary" role="alert">
+                Extensão não reconhecida. Fazer download para visualização
+            </div>
+            <button class="btn" (click)="goTo()">Baixar arquivo</button>
+        </div>
+    </div>
+
+</div>

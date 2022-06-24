@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="search">
+    <h3 class="search__header">Qual conteúdo você deseja encontrar?</h3>
+    <div class="search__searchbar">
+        <input [formControl]="searchString" type="text">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Buscar</button>
+    </div>
+    
+    <hr>
+    
+    <div class="search__spinner" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+    <app-search-results *ngIf="!loading" [searchResults]="searchResults"></app-search-results>
+
+</div>

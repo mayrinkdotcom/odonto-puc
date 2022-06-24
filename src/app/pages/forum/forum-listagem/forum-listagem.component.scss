@@ -1,0 +1,26 @@
+mat-expansion-panel-header{
+    background-color: #22af80;
+}
+mat-panel-title{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    font-size: 28px;
+    color: white;
+}
+::ng-deep .mat-expansion-panel{
+    :focus{
+        background-color: #22af80 !important;
+    }
+}
+
+.btn-cadastrar-forum{
+    background-color: #22af80;
+    color: #fff;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+ a:hover{
+    background-color: #fff;
+    color:#22af80;
+    border: 1px solid  rgb(58, 242, 202);
+}

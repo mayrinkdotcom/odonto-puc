@@ -1,0 +1,46 @@
+<div class="user-pool">
+    <ng-container *ngIf="loading">
+        <div class="user-pool__loading d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div class="user-pool__table">
+            <div class="user-pool__table--header">
+                <span>Nome</span>
+                <span>E-mail</span>
+                <span>Cargo</span>
+                <span>Status</span>
+            </div>
+            <hr>
+            <div *ngFor="let user of userPool" class="user-pool__table--row align-items-center">
+                <p>{{ user.nome }}</p>
+                <p>{{ user.email }}</p>
+                <p *ngIf = "user.tipoUsuario == 'admin'">{{ user.tipoUsuario }}</p>
+                <div *ngIf = "user.tipoUsuario != 'admin'" class="actions">                
+                    <mat-form-field appearance="fill">
+                        <mat-select [(value)]="user.tipoUsuario">
+                            <mat-option *ngFor="let item of ['aluno', 'professor']" [value]="item">
+                                {{ item }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button [disabled]="false" class="actions__save" type="button" title="Confirmar" (click)="onChangeRole(user)">
+                        <mat-icon aria-hidden="false">save</mat-icon>
+                    </button>
+                </div>
+                <div *ngIf = "user.status == 'pendente'" class="actions">
+                    <!-- Aprovar -->
+                    <button class="actions__approve" type="button" title="Aprovar" (click)="sendDecision(user, 'ativo')">
+                        <mat-icon aria-hidden="false">done</mat-icon>
+                    </button>
+                    <!-- Rejeitar -->
+                    <button class="actions__decline" type="button" title="Rejeitar" (click)="sendDecision(user, 'inativo')">
+                        <mat-icon aria-hidden="false">close</mat-icon>
+                    </button>
+                </div>
+                <p  *ngIf = "user.status != 'pendente'">{{ user.status }}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

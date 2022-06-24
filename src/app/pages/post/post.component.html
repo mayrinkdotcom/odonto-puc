@@ -1,0 +1,26 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="row justify-content-center m-4">
+    <ng-container *ngIf="loading">
+        <div class="user-pool__loading d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!!posts && !loading">
+        <div *ngFor="let post of posts" class="col-xl-3 col-md-6">
+            <div class="card d-flex justify-content-center mb-5 bg-light">
+                <img src="assets/image/papelParede.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2>{{post.title}}</h2>
+                    <p *ngIf="post.descricao">{{post.descricao}}</p>
+                </div>
+                <div class="d-flex justify-content-end mb-3 me-3">
+                    <button (click)="goTo(post.category.type, post.id)" class="btn">Veja mais</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="(!posts || posts.length === 0) && !loading">
+        <i>Ainda não há publicações cadastradas nesta categoria</i>
+    </ng-container>
+</div>

@@ -1,0 +1,22 @@
+<app-header></app-header>
+<mat-card>
+    <mat-card-title>Novo Forum</mat-card-title>
+    <form [formGroup]="forumForm">
+        <mat-form-field>
+            <input matInput placeholder="Título do Forum" formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Descrição" formControlName="content">
+  </textarea>
+        </mat-form-field>
+    </form>
+</mat-card>
+
+
+<button mat-raised-button (click)="salvar()" color="primary">
+    Salvar
+</button>
+
+<button mat-raised-button (click)="cancel()">
+    Cancelar
+</button>

@@ -1,0 +1,55 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="forum">
+    <div>
+        <button class="btn forum__btn" (click)="goTo('forum/listagem')">Voltar</button>
+    </div>
+    <div class="forum__loading d-flex justify-content-center" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="forum__content" *ngIf="!loading">
+        <mat-card class="w-50">
+            <mat-card-title class="forum__title d-flex justify-content-center display-5">{{ forum.title }}</mat-card-title>
+            <div class="forum__content">
+                <p>{{ forum.body }}</p>
+            </div>
+        </mat-card>
+
+        <mat-expansion-panel class="w-50">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h3>Responder</h3>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+                <form [formGroup]="createForumAnswerForm">
+                    <textarea class="w-100" name="content" formControlName="content"></textarea>
+                </form>
+                <div class="d-flex justify-content-end">
+                    <button class="btn forum__btn" (click)="onSubmit()">
+                        Responder
+                    </button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <div *ngIf="loadingNewAnswer" class="loading d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <mat-card class="w-50">
+            <ng-container *ngIf="!!forum.answers || forum.answers.length > 0">
+                <div *ngFor="let answer of forum.answers; last as last">
+                    <p>{{answer.body}}</p>
+                    <span class="d-flex justify-content-end"><i>{{answer.tbuser.nome}}</i></span>
+                    <hr *ngIf="!last">
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!forum.answers || forum.answers.length === 0">
+                <i>Ainda não há respostas cadastradas neste fórum</i>
+            </ng-container>
+        </mat-card>
+
+    </div>
+</div>

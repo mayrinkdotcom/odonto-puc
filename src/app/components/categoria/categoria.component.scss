@@ -1,0 +1,46 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+input {
+    @include media-breakpoint-up(sm) {
+        width: 500px;
+    }
+    width: 75%;
+}
+select {
+    @include media-breakpoint-up(sm) {
+        width: 500px;
+    }
+    width: 75%;
+    
+}
+.Tipo{
+    margin-right: 2.3rem;
+}
+label{
+    font-size: 18px;
+}
+.btn{
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
+}
+mat-expansion-panel-header{
+    background-color: #22af80;
+}
+mat-panel-title{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    font-size: 28px;
+    color: white;
+}
+::ng-deep .mat-expansion-panel{
+    :focus{
+        background-color: #22af80 !important;
+    }
+}
+.btn{
+    background-color: #550504;
+    border: none;
+}

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Editar Categoria</h1>
+<div mat-dialog-content>
+  <mat-form-field [formGroup]="categoriaForm" appearance="fill">
+    <mat-label>Nome: </mat-label>
+    <input matInput type="nome" formControlName="nome" name="nome">
+    <div class="d-flex justify-content-between mt-3 mb-3">
+      <label class="Tipo">Tipo: </label>
+      <select formControlName="tipo" name="Tipo">
+        <option value="ebook">E-books</option>
+        <option value="video">Vídeo</option>
+        <option value="manual">Manuais</option>
+        <option value="artigo">Artigo</option>
+        <option value="banner">Banner</option>
+      </select>
+    </div>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="salvarEdicao()">Salvar</button>
+</div>

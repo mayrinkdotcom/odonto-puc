@@ -1,0 +1,42 @@
+<div class="d-md-flex flex-column align-items-center justify-content-center mt-4">
+    <mat-accordion>
+        <mat-expansion-panel [expanded]= "true" class="mb-4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Inserir Nova Categoria
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form class="categoria__form mt-4" [formGroup]="categoriaForm">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <label class="me-4" for="nome">Nome: </label>
+                        <input type="nome" formControlName="nome" name="nome">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 mb-3">
+                        <label class="Tipo">Tipo: </label>
+                        <select formControlName="tipo" name="Tipo">
+                            <option value="ebook">E-books</option>
+                            <option value="video">Vídeo</option>
+                            <option value="manual">Manuais</option>
+                            <option value="artigo">Artigo</option>
+                            <option value="banner">Banner</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button (click)="salvar()" type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+
+            </form>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Categorias Cadastradas
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-categorias-cadastradas ></app-categorias-cadastradas>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

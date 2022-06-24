@@ -1,0 +1,19 @@
+<div class="search-results">
+  <ng-container *ngIf="!searchResults || searchResults.length === 0">
+    <p>Não há resultados para a busca :(</p>
+  </ng-container>
+  <ng-container *ngIf="!!searchResults && searchResults.length > 0">
+    <div class="search-results__grid">
+      <div *ngFor="let item of searchResults" class="search-results__grid--item">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top"
+            src="https://image.shutterstock.com/image-photo/happy-young-woman-sitting-on-600w-2018571389.jpg"
+            alt="Imagem de capa do card">
+          <div class="card-body">
+            <p class="card-text">{{ item.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

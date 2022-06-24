@@ -1,0 +1,15 @@
+<mat-card *ngFor="let categoria of categorias" class="d-flex aligm-itens-center justify-content-between mt-4 mb-5">
+    <div>
+        <mat-card-title class="mb-3">
+            {{categoria.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            Tipo: {{categoria.type}}
+        </mat-card-subtitle>
+    </div>  
+    
+    <div>
+        <button class="ms-2" (click)="openDialog(categoria)"><img src="assets/image/pencil.svg"></button>
+        <button class="ms-2 me-3" (click)="excluir(categoria.id)"><img src="assets/image/trash.svg"></button>
+    </div>
+</mat-card>
