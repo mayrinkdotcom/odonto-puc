@@ -16,10 +16,10 @@ export class CategoriaModalComponent implements OnInit {
     private categoriaService: CategoriaService,
   ) {}
   categoriaForm = new FormGroup({
-    nome: new FormControl(null, [
+    nome: new FormControl(this.data.categoria.title, [
       Validators.required
     ]),
-    tipo: new FormControl(null, [
+    tipo: new FormControl(this.data.categoria.type, [
       Validators.required
     ]),
     CategoriaPrincipal: new FormControl([])
@@ -29,7 +29,7 @@ export class CategoriaModalComponent implements OnInit {
     this.data.categoria.tipo = this.categoriaForm.value.tipo;
     this.categoriaService.updateCategorie(this.data.categoria.id, this.data.categoria).subscribe();
     this.dialogRef.close();
-    location.reload()
+    // location.reload()
   }
   ngOnInit(): void {
   }

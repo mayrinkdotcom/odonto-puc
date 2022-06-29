@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 .forum {
   &__loading {
     display: flex;
@@ -74,10 +77,14 @@ mat-panel-title {
 }
 
 .btn-forum {
+  @include media-breakpoint-up(lg) {
+    margin-left: 30px;
+    margin-top: 20px;
+    height: 40px;
+  }  
   background-color: #920611;
-  color: #fff;
-  margin-left: 30px;
-  margin-top: 20px;
+  color: #fff;  
+  height: 70px;
 }
 a:hover {
   background-color: #550504;

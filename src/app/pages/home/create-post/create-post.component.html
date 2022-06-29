@@ -1,6 +1,8 @@
 <app-header></app-header>
-
-<div class="create-post w-50 mx-auto">
+<div class="d-flex justify-content-center" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" class="create-post d-lg-flex flex-column align-items-center">
   <div class="create-post__textarea">
     <form [formGroup]="createPostForm">
       <label for="title" class="form-label">
@@ -60,12 +62,11 @@
       {{ progress.percentage }}%
     </div>
   </div>
-  <div class="create-post__submit">
+  <div class="create-post__submit flex-wrap">
     <label *ngIf="this.createPostForm.get('tipo').value && this.createPostForm.get('tipo').value != 'video'"
       class="btn btn-default">
-      <input type="file" (change)="selectFile($event)" multiple="multiple" />
+      <input class="w-100" type="file" (change)="selectFile($event)"/>
     </label>
-
     <button class="btn btn-primary" type="submit" (click)="onSubmit()">
       Criar publicação
     </button>

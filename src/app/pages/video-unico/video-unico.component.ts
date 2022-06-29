@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { User } from 'src/app/types/User';
 
 @Component({
   selector: 'app-video-unico',
@@ -15,13 +17,17 @@ export class VideoUnicoComponent implements OnInit {
   pdfSrc;
   file: any;
   date: string;
+  user: User;
   constructor(
     private postService: PostsService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
+    private router: Router,
+    private authService:AuthService
   ) { }
 
   ngOnInit(): void {
+    this.user = this.authService.getLoggedUser();
     this.route.queryParams
       .subscribe(params => this.id = params.postId);
     this.postService.getPostById(this.id).subscribe(res => {
@@ -37,5 +43,11 @@ export class VideoUnicoComponent implements OnInit {
     const mes = (data.getMonth() + 1).toString().padStart(2, '0');
     const ano = data.getFullYear();
     return dia + '/' + mes + '/' + ano;
+  }
+  Excluir(): any{
+    this.postService.delete(this.post.id).subscribe(res => this.router.navigate(['feed']));
+  }
+  backTo(categoryId:string): void{
+    this.router.navigate(['posts'], { queryParams: { categoryId } });
   }
 }

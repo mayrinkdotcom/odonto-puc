@@ -8,14 +8,14 @@
         <mat-spinner></mat-spinner>
     </div>
     <div class="forum__content" *ngIf="!loading">
-        <mat-card class="w-50">
+        <mat-card class="size d-flex flex-column align-items-center">
             <mat-card-title class="forum__title d-flex justify-content-center display-5">{{ forum.title }}</mat-card-title>
             <div class="forum__content">
                 <p>{{ forum.body }}</p>
             </div>
         </mat-card>
 
-        <mat-expansion-panel class="w-50">
+        <mat-expansion-panel class="size d-flex flex-column align-items-center">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <h3>Responder</h3>
@@ -37,7 +37,7 @@
             <mat-spinner></mat-spinner>
         </div>
 
-        <mat-card class="w-50">
+        <mat-card class="size d-lg-flex flex-column">
             <ng-container *ngIf="!!forum.answers || forum.answers.length > 0">
                 <div *ngFor="let answer of forum.answers; last as last">
                     <p>{{answer.body}}</p>

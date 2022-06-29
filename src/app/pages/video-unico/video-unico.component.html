@@ -1,5 +1,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+<button *ngIf="user?.tipoUsuario !== 'aluno'" class="btn mx-5"  (click)="Excluir()">Excluir Post</button>
+<button class="btn mx-5" (click)="backTo(post.categoryId)">Voltar</button>
 <div class="d-flex flex-column align-items-center mt-5" *ngIf="post">
     <h1>{{ post.title }}</h1>
     <h3 *ngIf=post.descricao>{{ post.descricao}}</h3>

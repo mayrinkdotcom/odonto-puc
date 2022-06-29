@@ -25,7 +25,7 @@ export class PostsService {
 
     const user = this.authService.getLoggedUser();
     const body = {
-      title: title,
+      title,
       body: content,
       tbuserId: user.id,
       descricao,
@@ -85,6 +85,14 @@ export class PostsService {
     const body = {
       id,
       decision,
+    };
+    return this.httpClient.post<any>(URL, body);
+  }
+
+  delete(id: number): any {
+    const URL = `${environment.BASE_URL}/posts/delete`;
+    const body = {
+      id
     };
     return this.httpClient.post<any>(URL, body);
   }

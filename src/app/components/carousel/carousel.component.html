@@ -1,33 +1,51 @@
-<div class="container">
-    <div class="row">
-        <mat-card (click)="goTo('ebook')" class="col m-3">
-            <mat-card-title>E-books</mat-card-title>
-            <img src="assets/image/ebook.png" mat-card-image>
-        </mat-card>
-        <mat-card (click)="goTo('video')" class="col m-3">
-            <mat-card-title>Vídeo</mat-card-title>
-            <img src="assets/image/video.png" mat-card-image>
-        </mat-card>
-        <mat-card (click)="goTo('manual')" class="col m-3">
-            <mat-card-title>Manuais</mat-card-title>
-            <img src="assets/image/manual.png" mat-card-image>
-        </mat-card>
-        <mat-card class="col m-3">
-            <a href="forum/listagem">
-                <mat-card-title>Forum</mat-card-title>
-                <img src="assets/image/forum.png" mat-card-image>
-            </a>
-        </mat-card>
-    </div>
+<div class="feed container">
     <div class="row justify-content-center">
-        <mat-card (click)="goTo('artigo')" class="col-3 m-3">
-            <mat-card-title>Artigo</mat-card-title>
-            <img src="assets/image/artigo.png" mat-card-image>
-        </mat-card>
-        <mat-card (click)="goTo('banner')" class="col-3 m-3">
-            <mat-card-title>Banners</mat-card-title>
-            <img src="assets/image/banner.png" mat-card-image>
-        </mat-card>
+        <div class="feed__item col" (click)="goTo('ebook')">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>book</mat-icon>
+            </div>
+            <h2 class="feed__item--label">E-books</h2>
+        </div>
 
+        <div class="feed__item col" (click)="goTo('video')">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>smart_display</mat-icon>
+            </div>
+            <h2 class="feed__item--label">Vídeo</h2>
+        </div>
+
+        <div class="feed__item col" (click)="goTo('manual')">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>menu_book</mat-icon>
+            </div>
+            <h2 class="feed__item--label">Manuais</h2>
+        </div>
+        
+        <div class="feed__item col" routerLink="/forum/listagem">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>people</mat-icon>
+            </div>
+            <h2 class="feed__item--label">Fórum</h2>
+        </div>
+
+        <div class="feed__item col" (click)="goTo('artigo')">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>description</mat-icon>
+            </div>
+            <h2 class="feed__item--label">Artigos</h2>
+        </div>
+
+        <div class="feed__item col" (click)="goTo('banner')">
+            <div class="feed__item--color">
+                <span></span>
+                <mat-icon>co_present</mat-icon>
+            </div>
+            <h2 class="feed__item--label">Banners</h2>
+        </div>
     </div>
 </div>

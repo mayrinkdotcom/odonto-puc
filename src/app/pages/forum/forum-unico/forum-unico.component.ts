@@ -21,15 +21,15 @@ export class ForumUnicoComponent implements OnInit, OnDestroy {
     answers: any[],
   };
 
-  loading: boolean = false;
-  loadingNewAnswer: boolean = false;
+  loading = false;
+  loadingNewAnswer = false;
 
   subscriptions: Subscription[] = [];
   createForumAnswerForm: FormGroup = new FormGroup({
     content: new FormControl('')
   });
 
-  newForumAnswer: boolean = false;
+  newForumAnswer = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,7 +42,6 @@ export class ForumUnicoComponent implements OnInit, OnDestroy {
 
     this.route.queryParams
       .subscribe(params => this.forumId = params.forumId);
-    
     const sub = this.forumService.getById(this.forumId).subscribe(res => {
       this.loading = false;
       this.forum = {
@@ -59,7 +58,7 @@ export class ForumUnicoComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  getForumAnswers() {
+  getForumAnswers(): void {
     const sub = this.forumService.getForumAnswers(this.forumId).subscribe(res => {
       this.loading = false;
       this.forum.answers = res.forumAnswers;
@@ -72,7 +71,7 @@ export class ForumUnicoComponent implements OnInit, OnDestroy {
       try {
         this.loadingNewAnswer = true;
         const body = this.createForumAnswerForm.get('content').value;
-        const sub = this.forumService.createAnswer(body,this.forumId).subscribe(res => {
+        const sub = this.forumService.createAnswer(body, this.forumId).subscribe(res => {
           this.loadingNewAnswer = false;
           this.getForumAnswers();
         });
@@ -86,8 +85,8 @@ export class ForumUnicoComponent implements OnInit, OnDestroy {
     }
   }
 
-  goTo(path: string) {
-    this.router.navigate([path])
+  goTo(path: string): void {
+    this.router.navigate([path]);
   }
 
 }

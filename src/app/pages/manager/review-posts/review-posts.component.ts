@@ -54,19 +54,19 @@ export class ReviewPostsComponent implements OnInit, OnDestroy {
   }
   goTo(categoria: string, postId: any): void {
     if (categoria === 'banner') {
-      window.open("http://localhost:4200/banners/cartazes?postId="+postId);
+      this.router.navigate(["banners/cartazes?postId="+postId]);
     }
     if (categoria === 'ebook') {
-      window.open("http://localhost:4200/ebook/cartilhas/folder?postId="+postId);
+      this.router.navigate(["ebook/cartilhas/folder?postId="+postId]);
     }
     if (categoria === 'manual') {
-      window.open("http://localhost:4200/manuais/notas-tecnicas/protocolos?postId="+postId);
+      this.router.navigate(["manuais/notas-tecnicas/protocolos?postId="+postId]);
     }
     if (categoria === 'video') {
-      window.open("http://localhost:4200/videos/podcasts?postId="+postId);
+      this.router.navigate(["videos/podcasts?postId="+postId]);
     }
     if (categoria === 'artigo') {
-      window.open("http://localhost:4200/artigo/texto-de-apoio?postId="+postId);
+      this.router.navigate(["artigo/texto-de-apoio?postId="+postId]);
     }
   }
 

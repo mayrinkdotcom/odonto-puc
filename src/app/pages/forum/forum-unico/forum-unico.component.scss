@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 .forum {
   padding: 24px;
   >* {
@@ -24,6 +27,11 @@
     color: #fff;
     &:hover {
       background-color: #550504;
+    }
+  }
+  .size{
+    @include media-breakpoint-up(md) {
+      width: 300px !important;
     }
   }
 }

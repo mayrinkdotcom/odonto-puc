@@ -1,8 +1,9 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+<a href="feed" class="btn mx-4 mt-4" >Voltar</a>
 <div class="row m-3">
-    <div *ngFor="let category of categories" class="col-3">
-        <div class="card d-flex mb-5 bg-light" style="width: 18rem;">
+    <div *ngFor="let category of categories" class="col-md-4 col-xl-3">
+        <div class="card d-flex mb-5 bg-light">
             <img src="assets/image/papelParede.png" class="card-img-top" alt="..." style="height: 100px;">
             <div class="card-body">
                 <h2>{{category.title}}</h2>

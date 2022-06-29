@@ -18,18 +18,25 @@
       padding: 0;
       width: 100%;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       font-size: 16px;
       list-style-type: none;
 
       &__item {
+        width: 100%;
         padding: 16px;
         button {
+          width: 100%;
           color: #FFFFFF;
           background-color: #550504;
           padding: 16px;
           border: none;
           border-radius: 8px;
+        }
+
+        @media screen and (min-width: 768px) {
+          width: auto;
         }
       }
     }

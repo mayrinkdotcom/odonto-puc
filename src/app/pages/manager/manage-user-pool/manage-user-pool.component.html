@@ -13,33 +13,54 @@
                 <span>Status</span>
             </div>
             <hr>
-            <div *ngFor="let user of userPool" class="user-pool__table--row align-items-center">
+            <div *ngFor="let user of userPool; index as index" class="user-pool__table--row" [ngClass]="index%2==0? 'light' : 'shaded'">
                 <p>{{ user.nome }}</p>
                 <p>{{ user.email }}</p>
-                <p *ngIf = "user.tipoUsuario == 'admin'">{{ user.tipoUsuario }}</p>
-                <div *ngIf = "user.tipoUsuario != 'admin'" class="actions">                
-                    <mat-form-field appearance="fill">
+                <p *ngIf="user.tipoUsuario == 'admin'">{{ user.tipoUsuario }}</p>
+                <div *ngIf="user.tipoUsuario != 'admin'" class="actions">
+                    <mat-form-field appearance="fill" class="w-75">
                         <mat-select [(value)]="user.tipoUsuario">
                             <mat-option *ngFor="let item of ['aluno', 'professor']" [value]="item">
                                 {{ item }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <button [disabled]="false" class="actions__save" type="button" title="Confirmar" (click)="onChangeRole(user)">
+                    <button [disabled]="false" class="actions__save" type="button" title="Confirmar"
+                        (click)="onChangeRole(user)">
                         <mat-icon aria-hidden="false">save</mat-icon>
                     </button>
                 </div>
-                <div *ngIf = "user.status == 'pendente'" class="actions">
+                <div *ngIf="user.status == 'pendente'" class="actions">
                     <!-- Aprovar -->
-                    <button class="actions__approve" type="button" title="Aprovar" (click)="sendDecision(user, 'ativo')">
+                    <button class="actions__approve" type="button" title="Aprovar"
+                        (click)="sendDecision(user, 'ativo')">
                         <mat-icon aria-hidden="false">done</mat-icon>
                     </button>
                     <!-- Rejeitar -->
-                    <button class="actions__decline" type="button" title="Rejeitar" (click)="sendDecision(user, 'inativo')">
+                    <button class="actions__decline" type="button" title="Rejeitar"
+                        (click)="sendDecision(user, 'inativo')">
                         <mat-icon aria-hidden="false">close</mat-icon>
                     </button>
                 </div>
-                <p  *ngIf = "user.status != 'pendente'">{{ user.status }}</p>
+                <div *ngIf="user.status != 'pendente'" class="actions">
+                    <p *ngIf="edit==false">{{ user.status }}</p>
+                    <mat-form-field *ngIf="edit==true" appearance="fill">
+                        <mat-select [(value)]="user.status">
+                            <mat-option *ngFor="let item of ['ativo', 'inativo']" [value]="item">
+                                {{ item }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button *ngIf="edit==true" [disabled]="false" class="actions__save" type="button" title="Confirmar"
+                        (click)="onChangeStatus(user)">
+                        <mat-icon aria-hidden="false">save</mat-icon>
+                    </button>
+                    <button *ngIf="edit==false" [disabled]="false" class="actions__edit" type="button" title="Editar"
+                        (click)="edit = true">
+                        <mat-icon aria-hidden="false">edit</mat-icon>
+                    </button>
+                </div>
+
             </div>
         </div>
     </ng-container>

@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 .create-post {
     padding: 24px;
     &__textarea {
@@ -14,5 +17,10 @@
             font-weight: bold;
             background-color: #550504;
         }
+    }
+    input, select, textarea{
+        @include media-breakpoint-up(lg) {
+            width: 400px;
+        }    
     }
 }

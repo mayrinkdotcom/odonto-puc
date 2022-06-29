@@ -12,11 +12,12 @@ import { CategoriaService } from 'src/app/services/categoria.service';
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss'],
 })
-export class CreatePostComponent implements OnInit, OnDestroy {
+export class CreatePostComponent implements OnDestroy {
   selectedFiles: FileList;
   currentFileUpload: File;
   categorias: any;
   tipo: string;
+  loading = false;
   progress: { percentage: number } = { percentage: 0 };
   post: any[] = [];
   createPostForm: FormGroup = new FormGroup({
@@ -33,20 +34,16 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private FileService: FileService,
-    private categoriaService: CategoriaService
+    private fileService: FileService
   ) {}
 
-  ngOnInit(): void {
-    
-  }
-  setCategorie(){
+  setCategorie(): void{
     this.postsService.getCategories(this.createPostForm.value.tipo).subscribe((result) => {
       this.categorias = result.categories;
     });
   }
 
-  selectFile(event) {
+  selectFile(event): void {
     this.selectedFiles = event.target.files;
   }
 
@@ -55,6 +52,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    this.loading = true;
     const title = this.createPostForm.get('title').value;
     console.log('🚀 -> CreatePostComponent -> onSubmit -> title', title);
     const content = this.createPostForm.get('content').value;
@@ -68,10 +66,14 @@ export class CreatePostComponent implements OnInit, OnDestroy {
         this.createPostForm.get('link').value,
         this.createPostForm.get('categoria').value
       )
-      .subscribe((res) => this.upload(res.posts.id));
+      .subscribe((res) => {
+        this.upload(res.posts.id);
+        this.router.navigate(['feed']);
+        this.loading = false;
+      });
   }
 
-  upload(lastid) {
+  upload(lastid): void {
     console.log(this.selectFile);
 
     console.log(this.selectedFiles);
@@ -80,7 +82,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     } else {
       this.progress.percentage = 0;
       this.currentFileUpload = this.selectedFiles[0];
-      this.FileService.upload(this.currentFileUpload, lastid).subscribe(
+      this.fileService.upload(this.currentFileUpload, lastid).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress.percentage = Math.round(

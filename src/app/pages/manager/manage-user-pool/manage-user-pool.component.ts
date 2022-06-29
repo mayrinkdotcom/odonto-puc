@@ -9,7 +9,7 @@ import { User } from 'src/app/types/User';
   styleUrls: ['./manage-user-pool.component.scss']
 })
 export class ManageUserPoolComponent implements OnInit, OnDestroy {
-
+  edit = false;
   userPool: User[];
   loading = false;
   subscription: Subscription[] = [];
@@ -45,6 +45,19 @@ export class ManageUserPoolComponent implements OnInit, OnDestroy {
       this.loading = true;
       const sub = this.authService.updateUser(user).subscribe(data => {
         this.loading = false;
+      });
+      this.subscription.push(sub);
+    } catch (error) {
+      console.error('ERROR on getUserPool', error);
+      throw error;
+    }
+  }
+  onChangeStatus(user): void{
+    try {
+      this.loading = true;
+      const sub = this.authService.updateUser(user).subscribe(data => {
+        this.loading = false;
+        this.edit = false;
       });
       this.subscription.push(sub);
     } catch (error) {

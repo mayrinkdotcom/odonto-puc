@@ -1,13 +1,15 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+<button *ngIf="user?.tipoUsuario !== 'aluno'" class="btn mx-5" (click)="Excluir()">Excluir Post</button>
+<button class="btn mx-5" (click)="backTo(post.categoryId)">Voltar</button>
 <div class="d-flex flex-column align-items-center m-5" *ngIf="post">
     <h1>{{ post.title }}</h1>
     <h3 *ngIf=post.descricao>{{ post.descricao}}</h3>
     <p>Publicado por: {{post.tbuser.nome}} </p>
     <p>Data de criação: {{date}}</p>
     <div class="mt-4 text-justify" [innerHtml]= 'post.body'></div>
-    <div *ngIf="file.type == 'image/png'">
-        <img src="http://localhost:8080/files/posts/1">
+    <div *ngIf="file.type == 'image/png' || file.type == 'image/jpg' || file.type == 'image/jpeg'">
+        <img src="https://odonto-puc-nodejs.herokuapp.com/files/posts/{{post.id}}">
     </div>
     <div *ngIf="file">
         <div class="d-flex flex-column align-items-center" *ngIf="file.type == 'application/pdf'">
@@ -16,7 +18,7 @@
                 style="width: 800px; height: 500px;"></pdf-viewer>
         </div>
         <div class="d-flex flex-column align-items-center"
-            *ngIf="file.type != 'application/pdf' && file.type != 'image/png'">
+            *ngIf="file.type != 'application/pdf' && file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/jpeg'">
             <div class="alert alert-secondary" role="alert">
                 Extensão não reconhecida. Fazer download para visualização
             </div>
