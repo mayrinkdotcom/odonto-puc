@@ -53,20 +53,21 @@ export class ReviewPostsComponent implements OnInit, OnDestroy {
     }
   }
   goTo(categoria: string, postId: any): void {
+
     if (categoria === 'banner') {
-      this.router.navigate(["banners/cartazes?postId="+postId]);
+      this.router.navigate(["banners/cartazes"], {queryParams: { postId }});
     }
     if (categoria === 'ebook') {
-      this.router.navigate(["ebook/cartilhas/folder?postId="+postId]);
+      this.router.navigate(["ebook/cartilhas/folder"], {queryParams: { postId }});
     }
     if (categoria === 'manual') {
-      this.router.navigate(["manuais/notas-tecnicas/protocolos?postId="+postId]);
+      this.router.navigate(["manuais/notas-tecnicas/protocolos"], {queryParams: { postId }});
     }
     if (categoria === 'video') {
-      this.router.navigate(["videos/podcasts?postId="+postId]);
+      this.router.navigate(["videos/podcasts?postId="], {queryParams: { postId }});
     }
     if (categoria === 'artigo') {
-      this.router.navigate(["artigo/texto-de-apoio?postId="+postId]);
+      this.router.navigate(["artigo/texto-de-apoio?postId="], {queryParams: { postId }});
     }
   }
 

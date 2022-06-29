@@ -10,10 +10,10 @@ h3, p{
     margin: 0px !important;
 }
 pdf-viewer{
-    width: 800px;
+    width: 280px !important;
     max-width: 100%;
-    @include media-breakpoint-up(lg) {
-        width: 200px !important;
+    @include media-breakpoint-up(md) {
+        width: 800px !important;
     } 
 }
 .btn{

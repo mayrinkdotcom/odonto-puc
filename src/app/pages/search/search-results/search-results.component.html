@@ -6,11 +6,12 @@
     <div class="search-results__grid">
       <div *ngFor="let item of searchResults" class="search-results__grid--item">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top"
-            src="https://image.shutterstock.com/image-photo/happy-young-woman-sitting-on-600w-2018571389.jpg"
-            alt="Imagem de capa do card">
+          <img class="card-img-top" src="assets/image/papelParede.png" alt="Imagem de capa do card">
           <div class="card-body">
             <p class="card-text">{{ item.title }}</p>
+          </div>
+          <div class="d-flex justify-content-end mb-3 me-3">
+            <button (click)="goTo(item.tipo, item.id)" class="btn">Veja mais</button>
           </div>
         </div>
       </div>

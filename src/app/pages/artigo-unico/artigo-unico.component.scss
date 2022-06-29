@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 h1{
     color: #550504;
     font-size: 36px;
@@ -7,7 +10,11 @@ h3, p{
     margin: 0px !important;
 }
 pdf-viewer{
+    width: 280px !important;
     max-width: 100%;
+    @include media-breakpoint-up(md) {
+        width: 800px !important;
+    } 
 }
 .btn{
     margin:20px 0px;
